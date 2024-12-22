@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:pills/bloc/pills_bloc.dart';
 
 class PillsCategory extends StatelessWidget {
   final String pillsCategory;
@@ -14,9 +16,12 @@ class PillsCategory extends StatelessWidget {
     double heightOfScreen = MediaQuery.of(context).size.height;
 
     return InkWell(
-      onTap: () => context.push(
-        "/pills_category/$pillsCategory",
-      ),
+      onTap: () {
+        context.read<PillsBloc>().add(FetchPillsEvent(category: pillsCategory));
+        context.push(
+          "/pills_category/$pillsCategory",
+        );
+      },
       child: Container(
         width: widthOfScreen * 0.4,
         height: heightOfScreen * 0.4,
