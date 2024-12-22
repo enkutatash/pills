@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
 
       BlocProvider(create: (context)=>PillsBloc(
         repository: Repository(localDataSource: localDataSource,firebaseOperation: FirebaseOperation())
-      )),
+      )..add(FetchWordsEvent())),
 
     ], child: MaterialApp.router(
       debugShowCheckedModeBanner: false,

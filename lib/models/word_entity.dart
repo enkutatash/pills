@@ -5,11 +5,11 @@ class WordEntity {
   final String pronunciation;
   final String audioUrl;
 
-  WordEntity({required this.wordID, required this.word, required this.meaning,required this.pronunciation,required this.audioUrl});
+  WordEntity({ this.wordID = "", required this.word, required this.meaning,required this.pronunciation,required this.audioUrl});
 
   factory WordEntity.fromJson(Map<String, dynamic> json) {
     return WordEntity(
-      wordID: json['wordID'],
+      wordID: json['wordID']??"",
       word: json['word'],
       meaning: json['meaning'],
       pronunciation: json['pronunciation'],

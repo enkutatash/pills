@@ -12,3 +12,10 @@ class FetchPillsEvent extends PillsEvent {
 
   const FetchPillsEvent({required this.category});
 }
+
+
+class FetchWordsEvent extends PillsEvent {
+  
+
+  const FetchWordsEvent();
+}
