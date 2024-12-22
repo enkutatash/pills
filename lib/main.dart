@@ -10,18 +10,20 @@ import 'package:pills/route.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
    await Firebase.initializeApp(); 
-  runApp(const MyApp());
+     final localDataSource = await LocalDataSource.create();
+  runApp( MyApp(localDataSource: localDataSource,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   final LocalDataSource localDataSource;
+  const MyApp({super.key,required this.localDataSource});
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [
 
       BlocProvider(create: (context)=>PillsBloc(
-        repository: Repository(firebaseOperation: FirebaseOperation())
+        repository: Repository(localDataSource: localDataSource,firebaseOperation: FirebaseOperation())
       )),
 
     ], child: MaterialApp.router(

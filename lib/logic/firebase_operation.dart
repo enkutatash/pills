@@ -15,11 +15,11 @@ class FirebaseOperation {
         .get();
     return pillsCollection.docs.map((doc) {
       final community = PillsModel.fromFirebase(doc.data());
-    print("community from rem" + community.name);
+    
       return community;
     }).toList();
    }catch(e){
-    print("remote eee" + e.toString());
+    
      throw Exception(e);
    }
   }
