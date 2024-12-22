@@ -19,6 +19,14 @@ dependencies:
   go_router: ^14.6.2
   awesome_bottom_bar: ^1.2.4
   equatable: ^2.0.7
+  firebase_storage: ^12.1.1
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
+  shared_preferences: ^2.3.4
+  internet_connection_checker: ^3.0.1
+  # just_audio: ^0.9.42
+
+  
 
 dev_dependencies:
   flutter_test:
