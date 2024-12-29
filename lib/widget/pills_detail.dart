@@ -14,7 +14,6 @@ class PillsDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       child: Padding(
@@ -44,7 +43,7 @@ class PillsDetail extends StatelessWidget {
               child: Text("${pillsModel.category}",
                   style: TextStyle(color: Colors.white)),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
@@ -57,15 +56,15 @@ class PillsDetail extends StatelessWidget {
             DescriptionDisplay(
               text: pillsModel.uses,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            PillsTake(
+            const PillsTake(
               duration: "6/month",
               dose: "2/day",
               frequency: "daily",
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             ListDisplay(
