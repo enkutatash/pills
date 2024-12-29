@@ -27,7 +27,7 @@ final router = GoRouter(initialLocation: "/dash_board", routes: [
             GoRoute(
               path: '/home_page',
               builder: (BuildContext context, GoRouterState state) =>
-                  HomePage(),
+                  const HomePage(),
             ),
             GoRoute(
                 path: '/pills_category/:category',
