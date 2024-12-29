@@ -26,8 +26,6 @@ class WordDetail extends StatelessWidget {
                     wordEntity.word,
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
-                  IconButton(
-                      onPressed: () {}, icon: Icon(Icons.volume_up_outlined))
                 ],
               ),
               Text(
@@ -40,14 +38,6 @@ class WordDetail extends StatelessWidget {
               ),
             ],
           ),
-          Positioned(
-            top: 10,
-            right: 10,
-            child: IconButton(
-                onPressed: () {},
-                icon:
-                    Icon(Icons.bookmark_border, color: Colors.blue, size: 30)),
-          )
         ],
       ),
     );

@@ -33,16 +33,6 @@ class PillsDetail extends StatelessWidget {
                     fit: BoxFit.contain,
                   ),
                 ),
-                Positioned(
-                  top: 10,
-                  right: 10,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.bookmark_border),
-                    color: Colors.blue,
-                    iconSize: 30,
-                  ),
-                )
               ],
             ),
             Container(

@@ -2,16 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pills/models/pills_model.dart';
 
 const List<TabItem> items = [
   TabItem(
     icon: CupertinoIcons.home,
     title: 'Home',
-  ),
-  TabItem(
-    icon: CupertinoIcons.bookmark,
-    title: 'Bookmarks',
   ),
   TabItem(
     icon: CupertinoIcons.book,
@@ -45,30 +40,12 @@ class _MainPageState extends State<MainPage> {
         shadowColor: Theme.of(context).shadowColor,
         backgroundColor: Colors.blue,
         leadingWidth: double.infinity,
-        leading: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Icon(
-                CupertinoIcons.line_horizontal_3_decrease,
-                size: 35,
-                color: Colors.white,
-              ),
-              Text(
-                title,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const Icon(
-                CupertinoIcons.person,
-                size: 35,
-                color: Colors.white,
-              ),
-            ],
+        title: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
@@ -118,7 +95,6 @@ class _MainPageState extends State<MainPage> {
     } else if (route.startsWith('/dictionary_page')) {
       return 'Dictionary';
     } else if (route.startsWith('/pills_category')) {
-      // Extract category for Pills Category route
       final category = route.split('/').last;
       return '${category[0].toUpperCase()}${category.substring(1)}';
     } else if (route.startsWith('/pills_detail')) {

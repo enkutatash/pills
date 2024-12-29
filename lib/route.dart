@@ -13,8 +13,9 @@ import 'package:pills/widget/pills_detail.dart';
 import 'package:pills/widget/pills_widget.dart';
 import 'package:pills/widget/word_detail.dart';
 
-final router = GoRouter(initialLocation: "/home_page", routes: [
+final router = GoRouter(initialLocation: "/dash_board", routes: [
   GoRoute(path: "/dash_board", builder: (context, state) => const Dashboard()),
+  
   StatefulShellRoute.indexedStack(
       builder: (BuildContext context, GoRouterState state,
           StatefulNavigationShell navigationShell) {
@@ -43,21 +44,7 @@ final router = GoRouter(initialLocation: "/home_page", routes: [
             
           ],
         ),
-        StatefulShellBranch(
-          routes: <RouteBase>[
-            GoRoute(
-              path: '/book_marks',
-              builder: (BuildContext context, GoRouterState state) =>
-                  BookMarks(),
-            ),
-            GoRoute(
-                path: '/book_marks:id',
-                builder: (BuildContext context, GoRouterState state) {
-                  final id = state.pathParameters['id'];
-                  return BookMarks();
-                }),
-          ],
-        ),
+        
         StatefulShellBranch(
           routes: <RouteBase>[
             GoRoute(

@@ -18,7 +18,7 @@ class Repository {
   Future<List<PillsModel>> fetchPills(String category) async {
     List<PillsModel> localData = localDataSource.getCategory(category);
 
-    if (localData != null && localData.isNotEmpty) {
+    if (localData.isNotEmpty) {
      
       return localData;
     }

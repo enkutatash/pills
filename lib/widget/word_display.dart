@@ -39,11 +39,6 @@ class WordDisplay extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   )),
               const Spacer(),
-              const Icon(
-                Icons.bookmark_border_outlined,
-                color: Colors.blue,
-                size: 30,
-              ),
             ],
           ),
         ),

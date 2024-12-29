@@ -20,10 +20,7 @@ class LocalDataSource {
 
   List<PillsModel> getCategory(String category) {
     List<String>? pillsJson = sharedPreferences.getStringList(category);
-    if (pillsJson == null) {
-      return [];
-    }
-    return pillsJson.map((jsonStr) {
+    return (pillsJson ?? []).map((jsonStr) {
       final Map<String, dynamic> pillMap = json.decode(jsonStr);
       return PillsModel.fromFirebase(pillMap);
     }).toList();
