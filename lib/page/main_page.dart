@@ -90,8 +90,6 @@ class _MainPageState extends State<MainPage> {
     // print("state " + extra.toString());
     if (route.startsWith('/home_page')) {
       return 'Home';
-    } else if (route.startsWith('/book_marks')) {
-      return 'Bookmarks';
     } else if (route.startsWith('/dictionary_page')) {
       return 'Dictionary';
     } else if (route.startsWith('/pills_category')) {
@@ -106,7 +104,6 @@ class _MainPageState extends State<MainPage> {
       final firstWord = pill.split(' ').first;
       return '${firstWord[0].toUpperCase()}${firstWord.substring(1)}';
     }
-
     return 'App';
   }
 }
