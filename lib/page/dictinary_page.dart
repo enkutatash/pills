@@ -29,6 +29,7 @@ class DictinaryPage extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
           }else if(state.status == WordStates.success) {
             final wordData = state.words;
+            wordData.sort((a , b) => a.word.compareTo(b.word));
               return Expanded(
               child: ListView.builder(
               itemCount: wordData.length,

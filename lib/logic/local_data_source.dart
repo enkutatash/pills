@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:pills/models/category_model.dart';
 import 'package:pills/models/pills_model.dart';
 import 'package:pills/models/word_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,5 +41,19 @@ class LocalDataSource {
     }).toList();
 
     return result;
+  }
+
+  List<CategoryModel>getCategories() {
+    List<String>? categories = sharedPreferences.getStringList("categories");
+    final result = (categories ?? []).map((data) {
+      final Map<String,dynamic> categoryModel = jsonDecode(data);
+      return CategoryModel.fromJson(categoryModel);
+    });
+
+    return result.toList();
+  }
+  Future<void> saveCategories(List<CategoryModel>categories) async {
+    List<String> categoriez = categories.map((data) => jsonEncode(data.toJson())).toList();
+    await sharedPreferences.setStringList("caterories", categoriez);
   }
 }

@@ -1,9 +1,11 @@
-class WordEntity {
+import 'package:equatable/equatable.dart';
+
+class WordEntity extends Equatable {
   final String word;
   final String meaning;
   final String pronunciation;
 
-  WordEntity({required this.word, required this.meaning,required this.pronunciation});
+  const WordEntity({required this.word, required this.meaning,required this.pronunciation});
 
   factory WordEntity.fromJson(Map<String, dynamic> json) {
     return WordEntity(
@@ -20,4 +22,6 @@ class WordEntity {
       'pronunciation': pronunciation,
     };
   }
+    @override
+    List<Object?> get props => [word , pronunciation];
 }

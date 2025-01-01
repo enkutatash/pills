@@ -1,6 +1,7 @@
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:pills/logic/firebase_operation.dart';
 import 'package:pills/logic/local_data_source.dart';
+import 'package:pills/models/category_model.dart';
 import 'package:pills/models/pills_model.dart';
 import 'package:pills/models/word_entity.dart';
 
@@ -60,5 +61,27 @@ class Repository {
       throw Exception(e);
     }
     
+  }
+
+  Future<List<CategoryModel>> fetchCategory() async {
+    List<CategoryModel>categories = localDataSource.getCategories();
+
+    if(categories.isNotEmpty) {
+      return categories;
+    }
+
+    bool isConnected = await hasConnection();
+    if (!isConnected) {
+      throw Exception('No internet connection');
+    }
+
+    try {
+      List<CategoryModel>remote = await firebaseOperation.fetchCategory();
+      await localDataSource.saveCategories(remote);
+
+      return remote;
+    }catch(e) {
+      throw Exception(e);
+    }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pills/bloc/category_bloc.dart';
 import 'package:pills/bloc/pills_bloc.dart';
 import 'package:pills/bloc/word_bloc.dart';
 import 'package:pills/firebase_options.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<WordBloc>(
           create: (context) => WordBloc(repository: repository),
         ),
+        BlocProvider<CategoryBloc>(
+          create: (context) => CategoryBloc(repository: repository),
+        )
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
