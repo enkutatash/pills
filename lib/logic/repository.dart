@@ -2,6 +2,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:pills/logic/firebase_operation.dart';
 import 'package:pills/logic/local_data_source.dart';
 import 'package:pills/models/pills_model.dart';
+import 'package:pills/models/word_entity.dart';
 
 class Repository {
   final LocalDataSource localDataSource;
@@ -19,7 +20,6 @@ class Repository {
     List<PillsModel> localData = localDataSource.getCategory(category);
 
     if (localData.isNotEmpty) {
-     
       return localData;
     }
     
@@ -30,7 +30,6 @@ class Repository {
     try {
       List<PillsModel> remoteData =
           await firebaseOperation.fetchPills(category);
-
       
       await localDataSource.saveCategory(category, remoteData);
 
@@ -38,5 +37,28 @@ class Repository {
     } catch (e) {
       throw Exception(e);
     }
+  }
+
+  Future<List<WordEntity>> fetchWords() async {
+    List<WordEntity>localWords = localDataSource.getWords();
+
+    if(localWords.isNotEmpty) {
+      return localWords;
+    }
+
+    bool isConnected = await hasConnection();
+    if (!isConnected) {
+      throw Exception('No internet connection');
+    }
+
+    try {
+      List<WordEntity>remoteWords = await firebaseOperation.fetchwords();
+      await localDataSource.saveWords(remoteWords);
+
+      return remoteWords;
+    }catch(e) {
+      throw Exception(e);
+    }
+    
   }
 }

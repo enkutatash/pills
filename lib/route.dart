@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pills/models/pills_model.dart';
 import 'package:pills/models/word_entity.dart';
-import 'package:pills/page/book_marks.dart';
 import 'package:pills/page/dash_board.dart';
 import 'package:pills/page/dictinary_page.dart';
 import 'package:pills/page/home_page.dart';
 import 'package:pills/page/main_page.dart';
 import 'package:pills/page/pills_list_page.dart';
-import 'package:pills/widget/pills_category.dart';
 import 'package:pills/widget/pills_detail.dart';
-import 'package:pills/widget/pills_widget.dart';
 import 'package:pills/widget/word_detail.dart';
 
-final router = GoRouter(initialLocation: "/dash_board", routes: [
+final router = GoRouter(initialLocation: "/dash_board", routes: [ 
   GoRoute(path: "/dash_board", builder: (context, state) => const Dashboard()),
   
   StatefulShellRoute.indexedStack(

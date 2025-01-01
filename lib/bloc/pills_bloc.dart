@@ -10,12 +10,12 @@ part 'pills_state.dart';
 class PillsBloc extends Bloc<PillsEvent, PillsState> {
   final Repository repository;
 
-  PillsBloc({required this.repository}) : super(PillsState()) {
+  PillsBloc({required this.repository}) : super(const PillsState()) {
     on<FetchPillsEvent>(_onFetchPills);
-    on<SearchPillsEvent>(_onSearchPills); // Add listener for SearchPillsEvent
+    on<SearchPillsEvent>(_onSearchPills); 
   }
 
-  // Fetch pills based on category
+
   FutureOr<void> _onFetchPills(FetchPillsEvent event, Emitter<PillsState> emit) async {
     emit(state.copyWith(status: PillsStatus.loading));
 
@@ -27,20 +27,18 @@ class PillsBloc extends Bloc<PillsEvent, PillsState> {
     }
   }
 
-  // Search pills based on query
+
 FutureOr<void> _onSearchPills(SearchPillsEvent event, Emitter<PillsState> emit) async {
   if (event.query.isEmpty) {
-    // When the search query is empty, return the full list of pills.
+
     emit(state.copyWith(pills: state.pills, status: PillsStatus.success));
   } else {
-    // Filter pills based on the query.
     final filteredPills = state.pills.where((pill) {
       return pill.name.toLowerCase().contains(event.query.toLowerCase());
     }).toList();
 
     emit(state.copyWith(pills: filteredPills, status: PillsStatus.success));
   }
-}
-}
+}}
 
 

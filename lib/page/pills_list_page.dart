@@ -1,8 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pills/bloc/pills_bloc.dart';
-import 'package:pills/dummydata.dart';
 import 'package:pills/widget/pills_widget.dart';
 import 'package:pills/widget/search_field.dart';
 
@@ -15,7 +13,7 @@ class PillsListPage extends StatelessWidget {
     return Column(
       children: [
         const Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: EdgeInsets.all(8),
           child: SearchField(),
         ),
         BlocBuilder<PillsBloc, PillsState>(builder: (context, state) {

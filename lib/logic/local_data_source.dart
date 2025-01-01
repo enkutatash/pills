@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:pills/models/pills_model.dart';
+import 'package:pills/models/word_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalDataSource {
@@ -24,5 +25,20 @@ class LocalDataSource {
       final Map<String, dynamic> pillMap = json.decode(jsonStr);
       return PillsModel.fromFirebase(pillMap);
     }).toList();
+  }
+
+  Future<void> saveWords(List<WordEntity>words) async {
+    List<String> wordz = words.map((word) => jsonEncode(word.toJson())).toList(); 
+    await sharedPreferences.setStringList("words", wordz);  
+  }
+
+  List<WordEntity>getWords() {
+    List<String>? savedWordz = sharedPreferences.getStringList("words");
+    final result  =  (savedWordz ?? []).map((jsonStr) {
+      final Map<String , dynamic> wordModel = jsonDecode(jsonStr);
+      return WordEntity.fromJson(wordModel);
+    }).toList();
+
+    return result;
   }
 }

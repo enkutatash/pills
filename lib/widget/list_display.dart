@@ -34,8 +34,8 @@ class ListDisplay extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          const SizedBox(height: 10), // Add spacing below the description
-          // Display the list of items with bullet points
+          const SizedBox(height: 10), 
+        
           ...text.map((item) {
             return Padding(
               padding: const EdgeInsets.only(bottom: 8.0),

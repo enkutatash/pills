@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pills/models/pills_model.dart';
-import 'package:pills/page/dash_board.dart';
 
 class PillsWidget extends StatelessWidget {
   final PillsModel pillsModel;
@@ -26,27 +25,25 @@ class PillsWidget extends StatelessWidget {
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 5,
                 blurRadius: 7,
-                offset: Offset(0, 3),
+                offset:const Offset(0, 3),
               ),
             ],
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image Section
-              Stack(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.network(
-                      pillsModel.imageUrl,
-                      width: double.infinity,
-                      height: heightOfScreen * 0.17,
-                      fit: BoxFit.cover,
-                    ),
+         
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(
+                    pillsModel.imageUrl,
+                    width: double.infinity,
+                    height: heightOfScreen * 0.17,
+                    fit: BoxFit.cover,
                   ),
-                ],
-              ),
+                ),
+          
+      
               const SizedBox(height: 8),
               // Rating Section
       

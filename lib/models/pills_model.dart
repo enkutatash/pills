@@ -10,6 +10,7 @@ class PillsModel extends Equatable {
   final String duration;
   final String dose;
   final String frequency;
+  
   const PillsModel(
       {required this.name,
       required this.composition,
@@ -27,7 +28,7 @@ class PillsModel extends Equatable {
       imageUrl: json['imageUrl'],
       category: json['category'],
       composition: List<String>.from(json['composition']),
-      sideEffect: List<String>.from(json['side_effect']),
+      sideEffect: List<String>.from(json['sideEffect']),
       uses: json['use'],
       duration: json['duration'],
       dose: json['dose'],
@@ -41,7 +42,7 @@ class PillsModel extends Equatable {
       'imageUrl': imageUrl,
       'category': category,
       'composition': composition,
-      'side_effect': sideEffect,
+      'sideEffect': sideEffect,
       'use': uses,
       'duration': duration,
       'dose': dose,
