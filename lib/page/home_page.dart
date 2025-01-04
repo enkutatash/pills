@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
         BlocBuilder<CategoryBloc , CategoryState>(builder: (context , state) {
-          if(state.status == CategoryStatus.loading) {
+          if(state.status == CategoryStatus.loading || state.status == CategoryStatus.initial) {
             return const Center(child: CircularProgressIndicator(),);
           }else if(state.status == CategoryStatus.success) {
 
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
             },
           ),
         );}else {
-            return const Center(child: Text("Failed to fetch data"));
+            return const Center(child: Text("No Data"));
         }
 
         }), 
